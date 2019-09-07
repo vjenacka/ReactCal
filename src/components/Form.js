@@ -1,26 +1,27 @@
 import React, { Component } from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
+import Calendar from "./Calendar";
 
-const Wrapper= styled.div`
-  input{
-    display:block;
-    width:180px;
-    padding:5px;
-    margin:0 auto;
-    background-color:#01579b;
-    color:#eee;
+const Wrapper = styled.div`
+  input {
+    display: block;
+    width: 180px;
+    padding: 5px;
+    margin: 0 auto;
+    background-color: #01579b;
+    color: #eee;
   }
   input::placeholder {
-  color: #eee;
-  opacity: 1;
+    color: #eee;
+    opacity: 1;
   }
-  button{
-    padding:10px;
-    background:#c62828;
-    color:#eee;
-    margin-top:20px;
+  button {
+    padding: 10px;
+    background: #c62828;
+    color: #eee;
+    margin-top: 20px;
   }
-`
+`;
 
 export class Form extends Component {
   state = {
@@ -47,6 +48,7 @@ export class Form extends Component {
           onChange={this.handleChange}
           placeholder="Enter your appointment..."
         />
+        <Calendar />
         <button onClick={this.handleClick}>Make Appointment</button>
       </Wrapper>
     );
