@@ -1,20 +1,26 @@
 import React, { Component } from "react";
 import moment from "moment";
-import styled from 'styled-components';
+import styled from "styled-components";
 
-const Wrapper= styled.div`
-    margin: 25px 0;
+const Wrapper = styled.div`
+  margin: 25px 0;
 
-    table{
-        margin: 0 auto;
-        padding:5px;
-        border: 1px solid #01579b;
-        background:#fff;
-    }
-    table td,th{
-        padding:5px;
-    }
-`
+  table {
+    margin: 0 auto;
+    padding: 5px;
+    border: 1px solid #01579b;
+    background: #fff;
+  }
+  table td,
+  th {
+    padding: 5px;
+  }
+
+  .today {
+    border: 2px solid #01579b;
+    border-radius: 50%;
+  }
+`;
 
 export class Calendar extends Component {
   state = {
@@ -28,6 +34,14 @@ export class Calendar extends Component {
       .startOf("month")
       .format("d");
     return firstDay;
+  };
+
+  currentDay = () => {
+    return this.state.dateObject.format("D");
+  };
+
+  month = () => {
+    return this.state.dateObject.format("MMMM");
   };
   render() {
     let weekDaysShortName = this.weekDaysShort.map(day => {
@@ -45,14 +59,15 @@ export class Calendar extends Component {
     //td with the amount of days in the month
     let daysInMonth = [];
     for (let d = 1; d <= this.state.dateObject.daysInMonth(); d++) {
+      let currentDay = d == this.currentDay() ? "today" : "";
       daysInMonth.push(
-        <td key={d} className="calendar-day">
+        <td key={d} className={`calendar-day ${currentDay}`}>
           {d}
         </td>
       );
     }
     //total days and blank slots
-    var totalSlots = [...blanks, ...daysInMonth];
+    let totalSlots = [...blanks, ...daysInMonth];
     let rows = [];
     let cells = [];
 
@@ -76,7 +91,8 @@ export class Calendar extends Component {
 
     return (
       <Wrapper>
-        <table className="calendar-day">
+        div.
+        <table>
           <thead>
             <tr>{weekDaysShortName}</tr>
           </thead>
